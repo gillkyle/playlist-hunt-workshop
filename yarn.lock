@@ -2378,7 +2378,7 @@ autoprefixer@^9.7.4:
     postcss "^7.0.27"
     postcss-value-parser "^4.0.3"
 
-axios@^0.19.2:
+axios@^0.19.0, axios@^0.19.2:
   version "0.19.2"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.19.2.tgz#3ea36c5d8818d0d5f8a8a97a6d36b86cdc00cb27"
   integrity sha512-fjgm5MvRHLhx+osE2xoekY70AhARk3a6hkN+3Io1jc00jtquGvxYlKlsFUhmUET0V5te6CcZI7lcv2Ym61mjHA==
@@ -6244,6 +6244,14 @@ hastscript@^5.0.0:
     hast-util-parse-selector "^2.0.0"
     property-information "^5.0.0"
     space-separated-tokens "^1.0.0"
+
+hasura-cli@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/hasura-cli/-/hasura-cli-1.2.2.tgz#23cc3a111744bd9b19ca244af4a9e16de55bc918"
+  integrity sha512-SpJWAAvqNWX2bqI3WoDuKOWiX/7Rt4YoT8PLCD4bUpT3MpN1oy5k4bcI0pXFH6sDCPVlXhYoeUFrbeisIV9CJg==
+  dependencies:
+    axios "^0.19.0"
+    chalk "^2.4.2"
 
 hex-color-regex@^1.1.0:
   version "1.1.0"

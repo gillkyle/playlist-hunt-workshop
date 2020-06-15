@@ -11,7 +11,8 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "init-hasura": "cd hasura && hasura migrate create initial --from-server --endpoint https://playlist-hunt.herokuapp.com/ && hasura metadata export --endpoint https://playlist-hunt.herokuapp.com/"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.5",
@@ -32,6 +33,7 @@
     "react-use-auth": "^0.5.3"
   },
   "devDependencies": {
+    "hasura-cli": "^1.2.2",
     "prettier": "^1.19.1"
   },
   "repository": {
