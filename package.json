@@ -12,7 +12,12 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "init-hasura": "cd hasura && hasura migrate create initial --from-server --endpoint https://playlist-hunt.herokuapp.com/ && hasura metadata export --endpoint https://playlist-hunt.herokuapp.com/"
+    "hasura-init": "hasura init",
+    "hasura-console": "cd hasura && hasura console",
+    "export-migrations": "cd hasura && hasura migrate create finished --from-server --endpoint https://playlist-hunt.herokuapp.com/",
+    "export-meta": "cd hasura && hasura metadata export --endpoint https://playlist-hunt.herokuapp.com/",
+    "migrate": "cd hasura && hasura migrate apply --endpoint https://playlist-hunt-workshop.herokuapp.com/ --version \"1592252889377\" --skip-execution",
+    "metadata": "cd hasura && hasura metadata apply --endpoint https://playlist-hunt-workshop.herokuapp.com/"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.5",

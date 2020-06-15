@@ -1,0 +1,1 @@
+CREATE TABLE "public"."user"("id" text NOT NULL, "name" text NOT NULL, "email" text NOT NULL, "created_at" date NOT NULL DEFAULT now(), "last_seen" date DEFAULT now(), PRIMARY KEY ("id") , UNIQUE ("email"));

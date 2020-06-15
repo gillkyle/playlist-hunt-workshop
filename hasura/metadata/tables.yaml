@@ -1,0 +1,39 @@
+- table:
+    schema: public
+    name: playlist
+  insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+      - uri
+      - title
+      - description
+      - id
+      - user_id
+      - created_at
+      backend_only: false
+  select_permissions:
+  - role: public
+    permission:
+      columns:
+      - id
+      - description
+      - title
+      - uri
+      - user_id
+      - created_at
+      filter: {}
+  - role: user
+    permission:
+      columns:
+      - id
+      - description
+      - title
+      - uri
+      - user_id
+      - created_at
+      filter: {}
+- table:
+    schema: public
+    name: user
