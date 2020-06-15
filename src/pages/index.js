@@ -12,11 +12,6 @@ const NEW_PLAYLISTS = gql`
       title
       description
       uri
-      upvote_aggregate {
-        aggregate {
-          count(columns: upvoted_at)
-        }
-      }
     }
   }
 `

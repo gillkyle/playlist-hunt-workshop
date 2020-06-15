@@ -17,16 +17,11 @@ exports.sourceNodes = async ({
   const { data } = await client.query({
     query: gql`
       query {
-        playlist(order_by: { upvote_aggregate: { count: desc } }) {
+        playlist {
           id
           title
           description
           uri
-          upvote_aggregate {
-            aggregate {
-              count(columns: upvoted_at)
-            }
-          }
         }
       }
     `,
