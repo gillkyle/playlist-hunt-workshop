@@ -16,8 +16,9 @@
     "hasura-console": "cd hasura && hasura console",
     "export-migrations": "cd hasura && hasura migrate create finished --from-server --endpoint https://playlist-hunt.herokuapp.com/",
     "export-meta": "cd hasura && hasura metadata export --endpoint https://playlist-hunt.herokuapp.com/",
-    "migrate": "cd hasura && hasura migrate apply --endpoint https://playlist-hunt-workshop.herokuapp.com/ --version \"1592252889377\" --skip-execution",
-    "metadata": "cd hasura && hasura metadata apply --endpoint https://playlist-hunt-workshop.herokuapp.com/"
+    "migrate": "cd hasura && hasura migrate apply --endpoint https://playlist-hunt-workshop.herokuapp.com/",
+    "metadata": "cd hasura && hasura metadata apply --endpoint https://playlist-hunt-workshop.herokuapp.com/",
+    "hasura-setup": "cd hasura && hasura migrate apply --endpoint ${npm_config_endpoint} && hasura metadata apply --endpoint ${npm_config_endpoint}"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.5",

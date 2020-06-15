@@ -9,16 +9,79 @@
 
 ## Overview
 
-PlaylistHunt is a simplified version/clone of ProductHunt. It has the following features:
+PlaylistHunt is an example app built for teaching workshops that is a simplified version/clone of ProductHunt. It has the following features:
 
 - Authentication with login and signup
 - Authorization and role based access
 - Submission of new playlists by logged in users
 - Upvoting by logged in users
 
+## Setup
+
+To get the base version of the app running—that the excersises in the workshop build on top of—follow these set up steps:
+
+1. Clone the repository:
+
+```shell
+git clone https://github.com/gillkyle/playlist-hunt-workshop.git
+```
+
+2. Install the dependencies that the project uses with npm/yarn:
+
+```shell
+npm install
+
+# or alternately
+yarn install
+```
+
+3. Create a new Auth0 app:
+
+First click "+ Create Application"
+
+![Create application button on Auth0](https://cleanshot-cloud-fra.s3.eu-central-1.amazonaws.com/media/750/EWSbpMXFuRqVE85P4dYqwpSG8IWKGObp6IFltHVx.jpeg?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5MF2VVMNBYBOTT5A%2F20200615%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20200615T223504Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Signature=547455fcb8c2d711d1f0ef0b2980ab0558b9390b2be8b16961d31c8394eb2fe9)
+
+Then give your app a name, select "Single Page Web Applications", and click "Create"
+
+![App creation flow on Auth0](https://cleanshot-cloud-fra.s3.eu-central-1.amazonaws.com/media/750/IlylfQtgbtA6zEvSS6GlJKPqyvASoEyd2g6QsZOj.jpeg?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5MF2VVMNBYBOTT5A%2F20200615%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20200615T223546Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Signature=6c55d3c2f32ae7ef53f55a74ee1e2822a4d84596da90caa6fb709d0b63f9e74d)
+
+4. Copy Auth0 domain and client ID into the `.env.development` file:
+
+Copy the values for Domain and Client ID into the `.env.development` file assigned to `GATSBY_AUTH0_DOMAIN` and `GATSBY_AUTH0_CLIENT_ID` respectively.
+
+![App settings page on Auth0](https://cleanshot-cloud-fra.s3.eu-central-1.amazonaws.com/media/750/0OgqNLgr1ro1Qn86Ugw6rGsx804BfYLSb344JNhh.jpeg?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5MF2VVMNBYBOTT5A%2F20200615%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20200615T223631Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Signature=f1c67add5f921be2f18ed64eea423a59cce8c7fb24ddc44d6204f1617f8d2ddf)
+
+5. Add `localhost:8000` to your Auth0 app's allowed domains settings to make sure that you can login in development:
+
+![App domain settings page on Auth0](https://cleanshot-cloud-fra.s3.eu-central-1.amazonaws.com/media/750/G86YDc31wL1lKSHaFF9qsFctnNBP0atQ6Wze9nRL.jpeg?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5MF2VVMNBYBOTT5A%2F20200615%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20200615T224946Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Signature=fb5b7e18eca33083d0c20bddc3b5bb6fb16538542dc06f355f465c5198139b4e)
+
+6. Deploy the Hasura GraphQL engine to a free Heroku app:
+
+You can click on this button to be taken straight to the creation flow on Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/hasura/graphql-engine-heroku)
+
+Add a name for your project (which will be used as the subdomain on `.herokuapp.com`) and click "Deploy app"
+
+![Deploy flow on Heroku](https://cleanshot-cloud-fra.s3.eu-central-1.amazonaws.com/media/750/3r7EhsFf6NX2YrKJTBoj3XhTrEVd8TxGwRD309tt.jpeg?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5MF2VVMNBYBOTT5A%2F20200615%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20200615T224450Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Signature=82a94d7dcf8d055365c0455b843ee0b35efc4f6601f5226745fafa4187926aec)
+
+You can click on "View App" when it is finished being created to visit the Hasura app's interface. _The url that Hasura runs at is your Hasura endpoint._
+
+7. Initialize and seed the Hasura app with some tables and data:
+
+Run the following script in the root of the project folder to apply data from the `hasura` folder in this repository to your Hasura app, replacing the placeholder with your endpoint (like `https://playlist-hunt-workshop.herokuapp.com/`)
+
+```shell
+npm run hasura-setup --endpoint=https://your-endpoint.herokuapp.com/
+```
+
+8. Add you Hasura endpoint to the `.env.development` file so that Gatsby plugins hit the correct database:
+
+Use the Hasura endpoint (where your Hasura app is running) and add it to the `.env.development` file, assigned to the key `GATSBY_API_URL`.
+
 ## Architecture
 
-The site is intended to help exemplify the hybrid nature of web apps—static and dynamic. There are two main pages that fetch a list of playlists: 
+The site is intended to help exemplify the hybrid nature of web apps—static and dynamic. There are two main pages that fetch a list of playlists:
 
 1. New
 1. Top
@@ -74,4 +137,3 @@ This project relies on several open source libraries and services:
 <h2 align="center">
   ▲PlaylistHunt
 </h2>
-
