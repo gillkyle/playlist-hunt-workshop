@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   plugins: [
     `gatsby-plugin-chakra-ui`,
@@ -5,8 +9,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-auth0`,
       options: {
-        domain: `gillkyle.auth0.com`,
-        clientId: `jnp9gQqg31Dcmr2iREXheChlk6g4BaHT`,
+        domain: process.env.GATSBY_AUTH0_DOMAIN,
+        clientId: process.env.GATSBY_AUTH0_CLIENT_ID,
       },
     },
     `gatsby-plugin-hasura`,

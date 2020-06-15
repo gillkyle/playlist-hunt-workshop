@@ -3,7 +3,7 @@ const fetch = require("isomorphic-fetch")
 const gql = require("graphql-tag")
 
 const client = new ApolloClient({
-  uri: "https://playlist-hunt.herokuapp.com/v1/graphql",
+  uri: process.env.GATSBY_API_URL + "/v1/graphql",
   fetch,
 })
 

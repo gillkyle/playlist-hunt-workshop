@@ -1,14 +1,12 @@
 /* INSERT USER RULE FOR AUTH0
 
-TODO: add this to recipe
-
 function (user, context, callback) {
   const userId = user.user_id;
   const nickname = user.nickname;
   const email = user.email;
   
-  const admin_secret = "<replace-with-secret>";
-  const url = "https://playlist-hunt.herokuapp.com/v1/graphql";
+  const admin_secret = "<REPLACE-WITH-SECRET>";
+  const url = "https://<REPLACE-WITH-URL>.com/v1/graphql";
   request.post({
       headers: {'content-type' : 'application/json', 'x-hasura-admin-secret': admin_secret},
       url: url,

@@ -22,7 +22,7 @@ const ApolloComponent = ({ element }) => {
     request: operation => {
       const tokenHeader = { Authorization: `Bearer ${token}` }
       operation.setContext({
-        uri: "https://playlist-hunt.herokuapp.com/v1/graphql",
+        uri: process.env.GATSBY_API_URL + "/v1/graphql",
         headers: {
           "content-type": "application/json",
           ...(token && tokenHeader),
