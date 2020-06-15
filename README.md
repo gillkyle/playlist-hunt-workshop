@@ -39,21 +39,21 @@ yarn install
 
 First click "+ Create Application"
 
-![Create application button on Auth0](https://cleanshot-cloud-fra.s3.eu-central-1.amazonaws.com/media/750/EWSbpMXFuRqVE85P4dYqwpSG8IWKGObp6IFltHVx.jpeg?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5MF2VVMNBYBOTT5A%2F20200615%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20200615T223504Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Signature=547455fcb8c2d711d1f0ef0b2980ab0558b9390b2be8b16961d31c8394eb2fe9)
+![Create application button on Auth0](https://raw.githubusercontent.com/gillkyle/images/master/ph-setup/create-auth-app.jpeg)
 
 Then give your app a name, select "Single Page Web Applications", and click "Create"
 
-![App creation flow on Auth0](https://cleanshot-cloud-fra.s3.eu-central-1.amazonaws.com/media/750/IlylfQtgbtA6zEvSS6GlJKPqyvASoEyd2g6QsZOj.jpeg?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5MF2VVMNBYBOTT5A%2F20200615%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20200615T223546Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Signature=6c55d3c2f32ae7ef53f55a74ee1e2822a4d84596da90caa6fb709d0b63f9e74d)
+![App creation flow on Auth0](https://raw.githubusercontent.com/gillkyle/images/master/ph-setup/auth-app-flow.jpeg)
 
 4. Copy Auth0 domain and client ID into the `.env.development` file:
 
 Copy the values for Domain and Client ID into the `.env.development` file assigned to `GATSBY_AUTH0_DOMAIN` and `GATSBY_AUTH0_CLIENT_ID` respectively.
 
-![App settings page on Auth0](https://cleanshot-cloud-fra.s3.eu-central-1.amazonaws.com/media/750/0OgqNLgr1ro1Qn86Ugw6rGsx804BfYLSb344JNhh.jpeg?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5MF2VVMNBYBOTT5A%2F20200615%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20200615T223631Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Signature=f1c67add5f921be2f18ed64eea423a59cce8c7fb24ddc44d6204f1617f8d2ddf)
+![App settings page on Auth0](https://raw.githubusercontent.com/gillkyle/images/master/ph-setup/auth-settings.jpeg)
 
 5. Add `localhost:8000` to your Auth0 app's allowed domains settings to make sure that you can login in development:
 
-![App domain settings page on Auth0](https://cleanshot-cloud-fra.s3.eu-central-1.amazonaws.com/media/750/G86YDc31wL1lKSHaFF9qsFctnNBP0atQ6Wze9nRL.jpeg?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5MF2VVMNBYBOTT5A%2F20200615%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20200615T224946Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Signature=fb5b7e18eca33083d0c20bddc3b5bb6fb16538542dc06f355f465c5198139b4e)
+![App domain settings page on Auth0](https://raw.githubusercontent.com/gillkyle/images/master/ph-setup/domains.jpeg)
 
 6. Deploy the Hasura GraphQL engine to a free Heroku app:
 
@@ -63,7 +63,7 @@ You can click on this button to be taken straight to the creation flow on Heroku
 
 Add a name for your project (which will be used as the subdomain on `.herokuapp.com`) and click "Deploy app"
 
-![Deploy flow on Heroku](https://cleanshot-cloud-fra.s3.eu-central-1.amazonaws.com/media/750/3r7EhsFf6NX2YrKJTBoj3XhTrEVd8TxGwRD309tt.jpeg?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5MF2VVMNBYBOTT5A%2F20200615%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20200615T224450Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Signature=82a94d7dcf8d055365c0455b843ee0b35efc4f6601f5226745fafa4187926aec)
+![Deploy flow on Heroku](https://raw.githubusercontent.com/gillkyle/images/master/ph-setup/create-heroku-app.jpeg)
 
 You can click on "View App" when it is finished being created to visit the Hasura app's interface. _The url that Hasura runs at is your Hasura endpoint._
 
@@ -83,17 +83,17 @@ Use the Hasura endpoint (where your Hasura app is running) and add it to the `.e
 
 You can add [an environment variable to your Hasura app on Heroku to password protect it](https://hasura.io/docs/1.0/graphql/manual/deployment/heroku/securing-graphql-endpoint.html#optional-use-the-admin-secret-with-the-cli). Go to "Settings", "Reveal Config Vars", and add a new variable with a key `HASURA_GRAPHQL_ADMIN_SECRET` and the value being the password you would like to use.
 
-![Heroku config vars](https://cleanshot-cloud-fra.s3.eu-central-1.amazonaws.com/media/750/3r7EhsFf6NX2YrKJTBoj3XhTrEVd8TxGwRD309tt.jpeg?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5MF2VVMNBYBOTT5A%2F20200615%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20200615T224450Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Signature=82a94d7dcf8d055365c0455b843ee0b35efc4f6601f5226745fafa4187926aec)
+![Heroku config vars](https://raw.githubusercontent.com/gillkyle/images/master/ph-setup/heroku-password.jpeg)
 
 10. Add env vars to Heroku for access control:
 
 Create another env var for `HASURA_GRAPHQL_UNAUTHORIZED_ROLE` with a value of `public` (making it so data can be accessible to users that are not logged in).
 
-![More Heroku config vars](https://cleanshot-cloud-fra.s3.eu-central-1.amazonaws.com/media/750/3r7EhsFf6NX2YrKJTBoj3XhTrEVd8TxGwRD309tt.jpeg?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5MF2VVMNBYBOTT5A%2F20200615%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20200615T224450Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Signature=82a94d7dcf8d055365c0455b843ee0b35efc4f6601f5226745fafa4187926aec)
+![More Heroku config vars](https://raw.githubusercontent.com/gillkyle/images/master/ph-setup/heroku-config.jpeg)
 
 Add a final env var for `HASURA_GRAPHQL_JWT_SECRET` with a value matching the long string generated at https://hasura.io/jwt-config/ when you select Auth0, and input your Auth0 domain.
 
-![Hasura JWT secret tool](https://cleanshot-cloud-fra.s3.eu-central-1.amazonaws.com/media/750/3r7EhsFf6NX2YrKJTBoj3XhTrEVd8TxGwRD309tt.jpeg?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5MF2VVMNBYBOTT5A%2F20200615%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20200615T224450Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Signature=82a94d7dcf8d055365c0455b843ee0b35efc4f6601f5226745fafa4187926aec)
+![Hasura JWT secret tool](https://raw.githubusercontent.com/gillkyle/images/master/ph-setup/jwt.jpeg)
 
 11. Connect new users created in Auth0 to Hasura:
 
