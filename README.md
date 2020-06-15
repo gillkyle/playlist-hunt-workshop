@@ -85,13 +85,23 @@ You can add [an environment variable to your Hasura app on Heroku to password pr
 
 ![Heroku config vars](https://cleanshot-cloud-fra.s3.eu-central-1.amazonaws.com/media/750/3r7EhsFf6NX2YrKJTBoj3XhTrEVd8TxGwRD309tt.jpeg?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5MF2VVMNBYBOTT5A%2F20200615%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20200615T224450Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Signature=82a94d7dcf8d055365c0455b843ee0b35efc4f6601f5226745fafa4187926aec)
 
-10. Connect new users created in Auth0 to Hasura:
+10. Add env vars to Heroku for access control:
+
+Create another env var for `HASURA_GRAPHQL_UNAUTHORIZED_ROLE` with a value of `public` (making it so data can be accessible to users that are not logged in).
+
+![More Heroku config vars](https://cleanshot-cloud-fra.s3.eu-central-1.amazonaws.com/media/750/3r7EhsFf6NX2YrKJTBoj3XhTrEVd8TxGwRD309tt.jpeg?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5MF2VVMNBYBOTT5A%2F20200615%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20200615T224450Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Signature=82a94d7dcf8d055365c0455b843ee0b35efc4f6601f5226745fafa4187926aec)
+
+Add a final env var for `HASURA_GRAPHQL_JWT_SECRET` with a value matching the long string generated at https://hasura.io/jwt-config/ when you select Auth0, and input your Auth0 domain.
+
+![Hasura JWT secret tool](https://cleanshot-cloud-fra.s3.eu-central-1.amazonaws.com/media/750/3r7EhsFf6NX2YrKJTBoj3XhTrEVd8TxGwRD309tt.jpeg?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5MF2VVMNBYBOTT5A%2F20200615%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20200615T224450Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Signature=82a94d7dcf8d055365c0455b843ee0b35efc4f6601f5226745fafa4187926aec)
+
+11. Connect new users created in Auth0 to Hasura:
 
 When someone signs up, the user created in Auth0 needs to be saved in the database. This can be done with Auth0 rules, which run snippets of code after someone signs up. 2 snippets are included in the `auth0` folder in this repository that you can copy into new Empty Rules on Auth0.
 
 Create 2 new rules, one called `insert-user` with the contents of [the `auth0/insert-user.js` file](https://github.com/gillkyle/playlist-hunt-workshop/blob/master/auth0/insert-user.js) (and replacing the placeholders with the password set in the password protection step, and your Hasura endpoint), and one called `jwt-claim`, copying in the contents of [the `auth0/jwt-claim` file](https://github.com/gillkyle/playlist-hunt-workshop/blob/master/auth0/jwt-claim.js).
 
-11. Run the app with `gatsby develop`:
+12. Run the app with `gatsby develop`:
 
 If you've completed the above steps, you should be able to start the app with `gatsby develop` and see it running at `localhost:8000`. You are able to sign up, and a user will be saved to the database. Your database already has access controls and 2 example tables to get started with.
 
